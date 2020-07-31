@@ -1,26 +1,33 @@
-const express = require('express');
-const morgan = require('morgan')
-const mongoose = require('mongoose');
+require("dotenv").config();
+
+const express = require("express");
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+const path = require("path");
+const cors = require("cors");
 
 const app = express();
 
-/*
-Database Setup
-*/ 
-mongoose.connect('mongodb://localhost:27017/upload', 
+/**
+ * Database setup
+ */
+mongoose.connect(
+    process.env.MONGO_URL , 
     {
-        userNewUrlParser: true
+        userNewUrlParser: true,
+        // useUnifiedTopology: true
     }
 );
 
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
+app.use(
+  "/files",
+  express.static(path.resolve(__dirname, "..", "tmp", "uploads"))
+);
 
-app.use(express.json()); //express consegue aceitar requisições em formato de json
-app.use(express.urlencoded({ extended: true})); // facilita na parte de envio de arquivos
-app.use(morgan('dev')); //lib para lidar com logs
-
-
-// app.use(require('./routers'));
-app.use(require("./routers"));
-
+app.use(require("./routes"));
 
 app.listen(3000);

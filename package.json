@@ -4,17 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon src/index.js" ,
+    "dev": "nodemon src/index.js",
     "start": "nodemon src/index.js"
-
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.724.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.26",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "multer-s3-v2": "^2.2.1",
     "nodemon": "^2.0.4"
   }
 }
