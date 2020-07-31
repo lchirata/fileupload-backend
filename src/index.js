@@ -19,6 +19,8 @@ app.use(express.urlencoded({ extended: true})); // facilita na parte de envio de
 app.use(morgan('dev')); //lib para lidar com logs
 
 
-app.use(require('./routers'));
+// app.use(require('./routers'));
+app.use(require("./routers"));
+
 
 app.listen(3000);
