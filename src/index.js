@@ -11,17 +11,17 @@ const app = express();
 /**
  * Database setup
  */
-// mongoose.connect(
-//     process.env.MONGO_URL , 
-//     {
-//         userNewUrlParser: true,
-//         // useUnifiedTopology: true
-//     }
-// );
+mongoose.connect(
+    process.env.MONGO_URL , 
+    {
+        userNewUrlParser: true,
+        // useUnifiedTopology: true
+    }
+);
 
-mongoose.connect('mongodb://localhost:27017/upload', {
-  useNewUrlParser: true
-});
+// mongoose.connect('mongodb://localhost:27017/upload', {
+//   useNewUrlParser: true
+// });
 
 app.use(cors());
 app.use(express.json());
