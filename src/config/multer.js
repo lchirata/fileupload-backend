@@ -19,6 +19,7 @@ const storageTypes = {
       });
     }
   }),
+  
   s3: multerS3({
     s3: new aws.S3(),
     bucket: "uploadexampleserver",
